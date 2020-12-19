@@ -37,6 +37,9 @@
 .text-center {
   text-align: center;
 }
+.text-uppercase {
+  text-transform: uppercase;
+}
 body {
   font-family: 'PingFang SC', 'Microsoft YaHei', Roboto, Arial, sans-serif;
   font-weight: 400;
@@ -49,7 +52,7 @@ body {
   background: #8e71c1;
 }
 a {
-  color: #0078e7;
+  color: var(--smc-link-color);
   text-decoration: none;
   transition: color 0.1s;
 }
@@ -115,6 +118,7 @@ hr {
   --hty-text-color: #333;
   --hty-secondary-text-color: #555;
   --post-block-bg-color: #fff;
+  --smc-link-color: #0078e7;
 }
 html {
   scroll-behavior: smooth;
@@ -868,7 +872,7 @@ input {
   font-size: 0.9rem;
   margin: 2rem 0;
   padding: 0.5rem 1rem;
-  border-left: 3px solid #f8722a;
+  border-left: 3px solid #ff5252;
   background-color: var(--hty-bg-color);
   list-style: none;
   word-break: break-all;
@@ -1138,10 +1142,10 @@ input {
   transition-duration: 0.2s;
   transition-delay: 0s;
   background-color: rgba(255,255,255,0.9);
-  box-shadow: 0 1px 8px rgba(255,255,255,0.1);
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
 }
 .post-card:hover {
-  box-shadow: 0 1px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 0px 25px rgba(0,0,0,0.05);
 }
 .post-card-header {
   padding-top: 0.5rem;
@@ -1166,6 +1170,9 @@ input {
   padding-left: 1rem;
   padding-right: 1rem;
   justify-content: space-between;
+}
+.post-card__actions .icon {
+  margin-bottom: -1px;
 }
 .post-card-tag {
   display: inline-flex;
@@ -1211,6 +1218,27 @@ input {
   width: 1.5rem;
   height: 1.5rem;
 }
+pre[class*='language-'] {
+  position: relative;
+}
+pre[class*='language-']:hover .copy-btn {
+  opacity: 1;
+}
+.copy-btn {
+  opacity: 0;
+  color: #808080;
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 1px 4px;
+  transition: opacity 0.2s;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border-radius: 4px;
+}
+.copy-btn:hover {
+  background-color: rgba(255,255,255,0.1);
+}
 .post-collapse {
   position: relative;
   margin: 0 5rem 2rem 5rem;
@@ -1243,7 +1271,7 @@ input {
   background: rgba(0,120,231,0.3);
 }
 .post-collapse .collection-title .archive-year {
-  font-family: 'Source Code Pro', 'Courier New', Courier, Consolas, Monaco, monospace;
+  font-family: 'Source Code Pro', Consolas, Monaco, SFMono-Regular, 'Ubuntu Mono', Menlo, monospace;
   color: #0078e7;
   margin: 0 1.5rem;
 }
@@ -1307,7 +1335,7 @@ input {
   margin-right: 0.3rem;
 }
 .post-collapse .post-header .post-meta {
-  font-family: 'Source Code Pro', 'Courier New', Courier, Consolas, Monaco, monospace;
+  font-family: 'Source Code Pro', Consolas, Monaco, SFMono-Regular, 'Ubuntu Mono', Menlo, monospace;
   font-size: 1rem;
   margin: 1rem 0 1rem 1.2rem;
   white-space: nowrap;
@@ -1379,8 +1407,13 @@ input {
   height: 1.5rem;
 }
 .markdown-body {
-  color: var(--hty-text-color) !important;
+  color: var(--hty-text-color);
   font-weight: 400;
+  font-family: 'PingFang SC', 'Microsoft YaHei', Roboto, Arial, sans-serif;
+}
+.markdown-body code,
+.markdown-body pre {
+  font-family: 'Source Code Pro', Consolas, Monaco, SFMono-Regular, 'Ubuntu Mono', Menlo, monospace;
 }
 .post-nav {
   display: flex;
@@ -1415,7 +1448,7 @@ input {
 .post-nav-next {
   display: inline-flex;
   align-items: center;
-  color: #0078e7;
+  color: var(--smc-link-color);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1454,7 +1487,7 @@ input {
   display: inline-block;
   text-align: center;
   padding: 0.5rem;
-  color: #ff8718;
+  color: #df667f;
   border-radius: 100%;
   width: 1.5rem;
   height: 1.5rem;
@@ -1609,13 +1642,13 @@ input {
   margin: 0;
 }
 .post-toc ol .toc-link {
-  color: #0078e7;
+  color: var(--smc-link-color);
 }
 .post-toc ol .toc-link:hover {
   color: #db2828;
 }
 .post-toc ol .toc-number {
-  font-family: 'Source Code Pro', 'Courier New', Courier, Consolas, Monaco, monospace;
+  font-family: 'Source Code Pro', Consolas, Monaco, SFMono-Regular, 'Ubuntu Mono', Menlo, monospace;
 }
 .post-toc ol .toc-child {
   font-size: 1rem;
@@ -1678,7 +1711,7 @@ input {
   left: 0;
   width: 20rem;
   background-color: #fff;
-  background-image: url("https://cdn.jsdelivr.net/gh/ReigetsuOtowa/ImgHosting/Otowa-Pic/sasakii.jpg");
+  background-image: url("");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom 3rem center;
@@ -1915,6 +1948,7 @@ input {
     --banner-line-color: #fff;
     --banner-char-color: #fff;
     --post-block-bg-color: #1b1f2e;
+    --smc-link-color: #3ca1ff;
   }
   :root:not([data-user-color-scheme]) ::-webkit-input-placeholder {
     color: #fff;
@@ -1935,9 +1969,6 @@ input {
   :root:not([data-user-color-scheme]) .sidebar {
     background-color: rgba(27,31,46,0.95);
     background-image: none;
-  }
-  :root:not([data-user-color-scheme]) .search-popup {
-    background-image: url("https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/bg/mountain-blur-30px.jpg");
   }
   :root:not([data-user-color-scheme]) .post-title-link {
     color: #3ca1ff;
@@ -1993,6 +2024,7 @@ input {
   --banner-line-color: #fff;
   --banner-char-color: #fff;
   --post-block-bg-color: #1b1f2e;
+  --smc-link-color: #3ca1ff;
 }
 [data-user-color-scheme='dark'] ::-webkit-input-placeholder {
   color: #fff;
@@ -2013,9 +2045,6 @@ input {
 [data-user-color-scheme='dark'] .sidebar {
   background-color: rgba(27,31,46,0.95);
   background-image: none;
-}
-[data-user-color-scheme='dark'] .search-popup {
-  background-image: url("https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/bg/mountain-blur-30px.jpg");
 }
 [data-user-color-scheme='dark'] .post-title-link {
   color: #3ca1ff;
